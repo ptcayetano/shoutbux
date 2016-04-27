@@ -9,6 +9,8 @@
   "author": "Philippides Cayetano",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.17"
   }
 }
