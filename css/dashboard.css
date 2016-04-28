@@ -1,0 +1,104 @@
+body {
+    background-color: #fff;    
+}
+
+.app-logout {
+    float: right;
+    margin: 10px;
+}
+
+.app-loggedin {
+    float: right;
+    margin: 10px;
+    color: #eee;
+    font-weight: bold;
+}
+
+.dashboard-container,
+.allshoutouts-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    float: left;
+}
+    .dashboard-container .loader {
+        width: 50px;
+        float: right;
+    }
+
+    .dashboard-container .shoutout-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-container .shoutbox {
+        width: 100%;
+        border-radius: 5px;
+        resize: none;
+        float: left;
+        margin: 10px 3px 3px 3px;
+        border-color: #6B9F3B;
+     }
+    
+    .dashboard-container .avatar {
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+        float: left;
+    }
+    
+        .avatar img {
+            width: 70px;
+            height: 70px;
+            border-radius: 64px;
+            margin: 3px;
+            border: 2px solid green;
+        }
+    
+    .dashboard-container .btn-shout {
+        float: right;
+        
+    }
+    
+.allshoutouts-container {
+    height: 100%;
+    width: 100%;
+    margin: 10px 0px;
+    border-top: 1px solid #ccc;
+    
+}
+
+    .allshoutouts-container .empty {
+        width: 100%;
+        text-align: center;
+        margin: 20px;
+    }
+
+    .allshoutouts-container .loader {
+        margin-top: 20px;
+    }
+
+    .allshoutouts-container .shoutout-item {
+        margin: 20px;
+        padding: 10px;
+        border: 1px dotted #6B9F3B;
+        border-radius: 10px;
+    }
+    
+        .shoutout-item .content {
+            font-weight: bold;
+        }
+        
+        .shoutout-item .date {
+            font-style: italic;
+            font-size: 9pt;
+            color: #aaa;
+            margin-top: 10px;
+        }
+        
+        .shoutout-item .action.delete {
+            float: right;
+            font-size: 12pt;
+            margin: 0px;
+            font-weight: bold;
+        }

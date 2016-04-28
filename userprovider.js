@@ -35,6 +35,28 @@ UserProvider.prototype.findAll = function(callback) {
     });
 }
 
+// find specific user
+UserProvider.prototype.find = function(query, callback) {
+    var matches = [];
+    
+    this.getCollection(function(error, collection) {
+        var cursor = collection.find(query);
+        cursor.each(function(err, doc) {
+            if (!err) {
+                if (doc != null) {
+                    matches.push(doc);
+                } else {
+                    callback(null, matches);
+                }
+            } else {
+                callback(err);
+            }
+            
+        });
+        
+    });
+}
+
 // save new user
 UserProvider.prototype.save = function(users, callback) {
     this.getCollection(function(error, user_collection) {

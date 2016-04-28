@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Shoutbux</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/dashboard.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="app-title">SHOUTBUX!</div>
+            <div class="app-logout"><a href="/logout" class="logout">Log Out</a></div>
+            <div class="app-loggedin"></div>
+        </nav>
+        
+        <div id="dashboard-container" class="container dashboard-container">
+            <form class="form-dashboard form-shoutout">
+                <div class="error-section hidden"></div>
+                <input type="hidden" id="inputUsername" class="form-control input-username" required="true" data-key="username" value="">
+                <div class="avatar">
+                    <img alt="avatar" src="img/face-3.jpg" />
+                </div>
+                <div class="shoutout-container col-xs-11 col-sm-11 col-md-11">
+                    <textarea class="shoutbox form-control" required="true" data-key="content" placeholder="What's on your mind" ></textarea>
+                    <button class="btn btn-primary ajax-link btn-shout" type="button" data-method="POST" data-url="/shout" data-before="BEFORE_SHOUTOUT" data-error="ERROR_SHOUTOUT" data-success="SUCCESS_SHOUTOUT" data-complete="COMPLETE_SHOUTOUT">SHOUT</button>
+                    <div class="loader hidden"></div>
+                </div>
+            </form>    
+        </div>
+        <br />
+        <div id="allshoutouts-container" class="container allshoutouts-container">
+            <div class="loader hidden"></div>
+            <form class="form-dashboard form-allshoutouts hidden">
+                <input type="hidden" class="form-control input-username" required="true" data-key="username">
+                <button class="btn btn-primary ajax-link btn-allshout" type="button" data-method="GET" data-url="/shout/_USERNAME_" data-clean="true" data-before="BEFORE_ALLSHOUT" data-error="ERROR_ALLSHOUT" data-success="SUCCESS_ALLSHOUT" data-complete="COMPLETE_ALLSHOUT"></button>
+            </form>
+            <div class="empty hidden">You have no shoutout yet. Post one now!</div>
+            <div class="shoutout-list">
+                
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/js.cookie.js"></script>
+        <script src="js/vendor/moment.js"></script>
+        <script src="js/shoutbux.js"></script>
+        <script src="js/dashboard.js"></script>
+
+    </body>
+</html>

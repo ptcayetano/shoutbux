@@ -1,34 +1,18 @@
-nav.navbar {
-    background-color: #6B9F3B;    
-    min-height: 40px;
-    max-height: 40px;
+.container .form-landing {
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
 }
 
-    nav.navbar .app-title {
-        color: #fff;
-        font-size: 16pt;
-        margin: 15px 15px 0px 10px;
-    }
-    
-.container {
-    margin-top: 20px;
+.form-landing h2,
+.form-landing label,
+.form-landing input,
+.form-landing button {
+    margin: 10px 0px 5px 0px;
 }
 
-    .container .form-landing {
-        max-width: 400px;
-        padding: 10px;
-        margin: 0 auto;
-    }
-    
-    .form-landing h2,
-    .form-landing label,
-    .form-landing input,
-    .form-landing button {
-        margin: 10px 0px 5px 0px;
-    }
-    
-    .container .register-link, 
-    .container .signup-link {
-        float: right;
-        margin-right: 5px;
-    }
+.container .register-link, 
+.container .signup-link {
+    float: right;
+    margin-right: 5px;
+}

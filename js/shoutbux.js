@@ -36,8 +36,10 @@ $(document).ready(function() {
             error_event = $(this).data('error');
             
         var url = $(this).data('url'),
-            method = $(this).data('method'),
+            clean = $(this).data('clean'),
+            method = $(this).data('method').toUpperCase(),
             inputs = $(this).closest('form').find('.form-control'),
+            error_section = $(this).closest('form').find('.error-section'),
             fields = {}, x, err_msgs = [];
             
         for (x=0; x<inputs.length; x++) {
@@ -46,13 +48,30 @@ $(document).ready(function() {
             var key = input.data('key'),
                 value = "",
                 label = "";
-            
+                
             if (key) {
                 value = input.val();
+                
+                if (clean) {
+                    // forming clean url
+                    var replace_key = "_" + key.toUpperCase() + "_";
+                    url = url.replace(replace_key, value);
+                }
                 
                 if (input.attr('required')) {
                     label = (input && input.data('label')) ? input.data('label') : input.data('key');
                     var msg = validate(label, [value], input.attr('type'));
+                    if (msg) {
+                        err_msgs.push(msg);
+                    }
+                }
+                
+                if (input.data('match')) {
+                    var match_element = $(input.data('match'));
+                    var value1 = $.trim(input.val()),
+                        value2 = $.trim(match_element.val());
+                        
+                    var msg = validate("password and confirm password", [value1, value2], 'password match');
                     if (msg) {
                         err_msgs.push(msg);
                     }
@@ -65,21 +84,27 @@ $(document).ready(function() {
         if (err_msgs.length > 0) {
             // validation error
             trigger(error_event, {messages: err_msgs});
+            showError(error_section, err_msgs);
         } else {
             trigger(before_event, fields);
-            $.ajax(url, {
+            var ajax_params = {
                 success: function(data) {
                     trigger(success_event, data);
                 },
-                error: function() {
-                    trigger(error_event, {});
+                error: function(xhr) {
+                    trigger(error_event, {xhr: xhr});
                 },
                 complete: function() {
                     trigger(complete_event, {});
                 },
-                method: method,
-                data: fields
-            });    
+                method: method
+            };
+            
+            if (method != 'GET') {
+                ajax_params.data = fields;
+            }
+            
+            $.ajax(url, ajax_params);    
         }
         
         e.preventDefault();
@@ -91,6 +116,7 @@ $(document).ready(function() {
  */
 function trigger(event, data) {
     $('body').trigger(event, data);
+    console.log("event " + event + " was triggered.");
 }
 
 function validate(label, values, type) {
@@ -98,6 +124,7 @@ function validate(label, values, type) {
     var err = 0, msg = "";
     label = label.toUpperCase();
     switch (type) {
+        case 'hidden':
         case 'password':
         case 'text':
             if ($.trim(values[0]).length == 0) {
@@ -112,15 +139,21 @@ function validate(label, values, type) {
                 msg = label + " is not valid.";
             }
         break;
-        
+        case 'password match':
+            var v1 = $.trim(values[0]),
+                v2 = $.trim(values[1]);
+            if (v1 != v2) {
+                err++;
+                msg = label + " does not match.";
+            }
+        break;
     }
     
     return msg;
 }
 
-function showError(container, messages) {
-    var section = $(container).find('.error-section'), 
-        x, err_str = "";
+function showError(section, messages) {
+    var x, err_str = "";
     
     for (x=0; x<messages.length; x++) {
         err_str += messages[x] + "<br />"

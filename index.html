@@ -25,8 +25,8 @@
             <form class="form-landing form-signin">
                 <h2 class="form-heading">Welcome!</h2>
                 <div class="error-section hidden">error</div>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="true" autofocus="" data-key="email">
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="true" autofocus="" data-key="username">
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="true" data-key="password">
                 <div class="loader hidden"></div>
@@ -42,14 +42,14 @@
             <form class=" form-landing form-register">
                 <h2 class="form-heading">Join Us!</h2>
                 <div class="error-section hidden"></div>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="true" autofocus="" data-key="email">
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="true" autofocus="" data-key="username">
                 <label for="inputName" class="sr-only">Full Name</label>
                 <input type="text" id="inputName" class="form-control" placeholder="Full Name" required="true" autofocus="" data-key="name">
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="true" data-key="password">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="true" data-match="#inputConfirmPassword" data-key="password">
                 <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required="" data-key="confirmPassword">
+                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" data-key="confirmPassword">
                 <div class="loader hidden"></div>
                 <button class="btn btn-lg btn-primary btn-block ajax-link btn-register" type="button" data-method="POST" data-url="/users" data-before="BEFORE_REGISTER" data-error="ERROR_REGISTER" data-success="SUCCESS_REGISTER" data-complete="COMPLETE_REGISTER">Register</button>
                 <div class="signup-link">
@@ -62,6 +62,7 @@
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/js.cookie.js"></script>
         <script src="js/shoutbux.js"></script>
         <script src="js/landing.js"></script>
 

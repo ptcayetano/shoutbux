@@ -134,6 +134,27 @@ a:hover {
     color: #7eba45 !important;
 }
 
+a.logout {
+    color: #eee !important;
+}
+
+nav.navbar {
+    background-color: #6B9F3B;    
+    min-height: 40px;
+    max-height: 40px;
+}
+
+    nav.navbar .app-title {
+        float: left;
+        color: #fff;
+        font-size: 20pt;
+        margin: 3px 5px 5px 10px;
+    }
+    
+.container {
+    margin-top: 20px;
+}
+
 .loader {
     background: url("../img/loader-green-32x32.gif") no-repeat center;
     width: 100%;
